@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-剑指Offer之找出数组中的重复数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/24/我的第一篇博客/">我的第一篇博客</a>
+      <a class="article-title" href="/2019/06/24/剑指Offer之找出数组中的重复数字/">剑指Offer之找出数组中的重复数字</a>
     </h1>
   
 
         
-        <a href="/2019/06/24/我的第一篇博客/" class="archive-article-date">
+        <a href="/2019/06/24/剑指Offer之找出数组中的重复数字/" class="archive-article-date">
   	<time datetime="2019-06-24T05:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
 </a>
         
@@ -172,11 +172,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>我的内容<br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1g4cf8ai9qvj30hg0hkqtm.jpg" alt></p>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在一个长度为n的数组中所有的数字都在0～n-1的范围内。数字中某些数字是重复的，但是不不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入一个长度为7的数组{2,3,1,0,2,5,3}，那么对应输出的重复数字是2或者3.</p>
 <hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>我的内容</p>
-<hr>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><pre><code>我们注意到数组中的数字都是在0～n-1的范围内。如果这个数组中没有重复的数字，那么当数组排序之后数字i将出现在下标为i的位置。由于数组中有重复的数字，有些位置可能存在多个数字，同时有些位置可能没有数字。
+现在我们需要重新排列这个数组。从头到尾一次扫描这个数组中的每个元素。当扫描到下标为i的数字时，首先比较这个数字（用m表示）是不是等于i。如果是，则继续扫描下一个数字；若果不是，则再拿它和第m个数字（即下标是m的元素）进行比较。如果它和第m个数字相等，就找到一个重复的数字（该数字在下标为i和m的位置都出现了）；如果它和第m个数字不相等，就把第i个数和第m个数交换，把m放在它的位置。接下来就是再次重复这个比较、交换的过程，直到我们找到这个重复的数字。</code></pre><hr>
+<h3 id="代入数据演示"><a href="#代入数据演示" class="headerlink" title="代入数据演示"></a>代入数据演示</h3><pre><code>我们以{2,3,1,0,2,5,3}为例分析。
+数组第0个元素开始比较，与2不相等。于是找到下标为2的元素，值是1，两个元素值不相等，于是交换，得到数组{1,3,2,0,2,5,3}
+以此类推，继续比较得到数组{3,1,2,0,2,5,3}
+继续比较，得到数组{0,1,2,3,2,5,3}
+继续比较，此时下标为0的元素值也为0，则扫描下一个元素，下标为1的元素值也为1，继续扫描下一个元素，下标为2的元素值也为2，继续扫描笑一个元素，下标为3的元素值也为3，继续扫描下一个元素，下标为4的元素值和下标不同（值为2）则和下标为2的元素值比较，发现相等，则返回，重复的数字就是2.</code></pre><hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><p>、、、bash</p>
+<p>$ public class DuplicateNumber {<br>$   public static void main(String[] args) {<br>$       int number[] = new int[2，3，1，0，2，5，3];<br>$       int result = duplicateNumber(number);<br>$       System.out.println(“重复的数字是：”+result);<br>$   }<br>$   public static int duplicateNumber(int[] array){<br>$       for(int i=0;i&lt;array.length;i++){<br>$           if(array[i]&gt;array.length-1)<br>$               return -1;<br>$       }<br>$       for(int i=0;i&lt;array.length;i++){<br>$           while(array[i]!= i){<br>$               if(array[i] == array[array[i]]){<br>$                    return  array[i];<br>$                }<br>$                swap(array,i,array[i]);<br>$            }<br>$        }<br>$        return -1;<br>$    }<br>$    public static void swap(int[] array,int m,int n){<br>$        int temp = array[m];<br>$        array[m] = array[n];<br>$        array[n] = temp;<br>$     }<br>$  }<br>、、、</p>
 
       
 
@@ -189,7 +195,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/24/我的第一篇博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/24/剑指Offer之找出数组中的重复数字/">展开全文 >></a>
         </p>
       
 
