@@ -307,6 +307,81 @@
 
 
   
+    <article id="post-剑指Offer之不修改数组找出数组中的重复数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/24/剑指Offer之不修改数组找出数组中的重复数字/">剑指Offer之不修改数组找出数组中的重复数字</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/24/剑指Offer之不修改数组找出数组中的重复数字/" class="archive-article-date">
+  	<time datetime="2019-06-24T06:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在一个长度为n+1的数组里的所有数字都在1~n的范围内，所以数组中至少有一个数字是重复的。请找出数组中任意一个重复的数字，但是不能修改输入的数组。例如，如果输入一个长度为8的数组{2,3,5,4,3,2,6,7}，那么对应输出的重复数字是2或者3。</p>
+<hr>
+<h3 id="问题分析1"><a href="#问题分析1" class="headerlink" title="问题分析1"></a>问题分析1</h3><p>创建一个长度为n+1的辅助数组，然后逐一把原数组的每个数字复制到辅助数组。如果原数组中被复制的数字是m，则把它复制到辅助数组中下标为m的位置，当发现该位置已有一个与下标相同的值时，就找到一个重复数字了。需要O(n)的辅助空间，时间复杂度为O(n)。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] number = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> result = duplicateNumber(number);</span><br><span class="line">        System.out.println(<span class="string">"重复的数字是："</span>+result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">duplicateNumber</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[array.length+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i] != temp[array[i]])&#123;</span><br><span class="line">                temp[array[i]] = array[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> array[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="问题分析2"><a href="#问题分析2" class="headerlink" title="问题分析2"></a>问题分析2</h3><p>按照二分查找的思路，将1-n分成两半，假如将1-n分成1-m和m+1到n。如果1<del>m中的数字的数目超过m,那就说明有重复数字；否则，另一半中一定有重复的数字。我们可以继续把包含重复数字的区间继续二分，直到找到一个重复的数字。<br>以题目中的长度为8的数组{2,3,5,4,3,2,6,7}为例：<br>根据题意，该数组中所有数字都在1</del>7之间，所以用来划分区间的界限数m为4，将其分为1<del>4和5</del>7两个部分。<br>然后统计1<del>4四个数字在数组中出现的次数，一共出现5次，所以1</del>4四个数字中，一定有一个以上的重复数字。<br>接着再把1~4划分为{1,2}，{3,4}两个部分，分别统计数字{1,2}和{3,4}出现的次数，前者两次，后者三次，所以，可以判断，3,4中一定有一个数重复了。<br>最后分别统计3和4在数组中出现次数，发现3出现了两次，所以找到了一个重复的数字3。</p>
+<hr>
+<h3 id="代码展示-1"><a href="#代码展示-1" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] number = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> result = duplicateNumber(number);</span><br><span class="line">        System.out.println(<span class="string">"重复的数字是："</span>+result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">duplicateNumber</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(array.length&lt;<span class="number">1</span> || array == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> length = array.length;</span><br><span class="line">        <span class="keyword">int</span> begin = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> end = length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (end &gt;= begin)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = ((end - begin) &gt;&gt; <span class="number">1</span>) + begin;</span><br><span class="line">            <span class="keyword">int</span> count = countRange(array,length,begin,mid);</span><br><span class="line">            <span class="keyword">if</span>(end == begin)&#123;</span><br><span class="line">                <span class="keyword">if</span>(count &gt; <span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> begin;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(count &gt; (mid-begin+<span class="number">1</span>))</span><br><span class="line">                end = mid;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                begin =mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">countRange</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> length,<span class="keyword">int</span> begin,<span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(array.length&lt;<span class="number">1</span> || array == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i]&gt;=begin &amp;&amp; array[i]&lt;=end)</span><br><span class="line">                count++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>解法2的时间复杂度是O(nlogn)，但是空间复杂度是O(1),和解法1相比，实际是用时间换空间。<br>并且这种解决方案不能找出所有重复的数字，因为[1,2]这个区间里有1,2两个数字，它们出现两次，但是1没有出现过，2出现了两次，但是默认为没有重复的数字跳过了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/24/剑指Offer之不修改数组找出数组中的重复数字/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-剑指Offer之找出数组中的重复数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
