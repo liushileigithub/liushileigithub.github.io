@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="刘世磊的博客">
 <meta property="og:description" content="我们知道，Redis可以设置配置文件的maxmemory参数，用来控制其最大可用内存。那么随着数据量的增加，如果所需空间要超过maxmemory怎么办呢？在Redis的配置文件中还有一个maxmemory-policy参数，用来配置Redis的内存淘汰策略，其默认值是noeviction。下面列出的就是当内存不足时，Redis删除键时的淘汰规则。    规则名称 规则说明    volatile-">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T15:05:38.991Z">
+<meta property="og:updated_time" content="2019-06-27T15:40:37.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis的内存淘汰策略">
 <meta name="twitter:description" content="我们知道，Redis可以设置配置文件的maxmemory参数，用来控制其最大可用内存。那么随着数据量的增加，如果所需空间要超过maxmemory怎么办呢？在Redis的配置文件中还有一个maxmemory-policy参数，用来配置Redis的内存淘汰策略，其默认值是noeviction。下面列出的就是当内存不足时，Redis删除键时的淘汰规则。    规则名称 规则说明    volatile-">
@@ -204,7 +204,7 @@
 </tr>
 <tr>
 <td>volatile-ttl</td>
-<td>删除生存时间最近的一个键</td>
+<td>删除生存时间最近的一个键(即将到期的键)</td>
 </tr>
 <tr>
 <td>noeviction</td>
@@ -212,7 +212,7 @@
 </tr>
 </tbody></table>
 <hr>
-<h3 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h3><p>LRU算法：Least RecentlyUsed，最近最少使用算法。也就是找出最近最少使用的键。<strong>redis中并不会准确的删除所有键中最近最少使用的键，而是随机抽取3个键，删除这三个键中最近最少使用的键。这3这个数字也是可以设置的，对应位置是配置文件中的maxmeory-samples。</strong></p>
+<h3 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h3><p>LRU算法：Least RecentlyUsed，最近最少使用算法。也就是找出最近最少使用的键。<br>我们可以通过EXPIRE key seconds(单位秒)给一个键设置生存时间。当超过生存时间，键会被自动删除。<br>我们可以通过TTL key 获取指定键的剩余生存时间(单位秒)。当返回值为-1时，表示永不过期(即没有给键设置生存时间)；返回值为-2时，表示键已不存在；其他均返回剩余生存时间。<br><strong>注意：Redis的淘汰规则中的LRU算法和最小TTL算法并非是一个精确算法，其实是一个估算值，是随机抽取5(Redis默认为5)个键，找到这5个键中最近最少使用的键或者TTL最小的键。可以修改配置文件中的maxmeory-samples来改变样本的容量。（样本容量越大，得到的结果越精确，但开销也会越大。Redis官方推荐为5）</strong></p>
 
       
 
