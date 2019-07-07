@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Redis持久化之RDB和AOF | 刘世磊的博客</title>
+  <title>剑指Offer之二维数组中的查找 | 刘世磊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们知道Redis是一个内存数据库，内存的特性是断电就会丢失所有数据，那么为什么我们重新开启Redis的时候原来保存的数据还存在呢？这就是Redis的持久化。Redis的持久化有两种方式RDB和AOF。  RDB(Redis DataBase)官网介绍Redis会在指定的时间间隔内将内存中的数据集快照写入磁盘，(即Snapshot快照)恢复时是将快照文件直接读回到内存。 原理Redis会单独创建(">
+  <meta name="description" content="问题描述在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。二维数组如下：  问题分析假如需要我们判断的数字是7，我们从数组的右上角开始比较，9比7大，又因为9是第四列的第一个(最小的)所以第4列全部比7大，这一列可以去除，那么接下来就在下图中剩下的三列中比同理右上角8比7大，8是第三">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis持久化之RDB和AOF">
-<meta property="og:url" content="http://yoursite.com/2019/06/29/Redis持久化之RDB和AOF/index.html">
+<meta property="og:title" content="剑指Offer之二维数组中的查找">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/剑指Offer之二维数组中的查找/index.html">
 <meta property="og:site_name" content="刘世磊的博客">
-<meta property="og:description" content="我们知道Redis是一个内存数据库，内存的特性是断电就会丢失所有数据，那么为什么我们重新开启Redis的时候原来保存的数据还存在呢？这就是Redis的持久化。Redis的持久化有两种方式RDB和AOF。  RDB(Redis DataBase)官网介绍Redis会在指定的时间间隔内将内存中的数据集快照写入磁盘，(即Snapshot快照)恢复时是将快照文件直接读回到内存。 原理Redis会单独创建(">
+<meta property="og:description" content="问题描述在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。二维数组如下：  问题分析假如需要我们判断的数字是7，我们从数组的右上角开始比较，9比7大，又因为9是第四列的第一个(最小的)所以第4列全部比7大，这一列可以去除，那么接下来就在下图中剩下的三列中比同理右上角8比7大，8是第三">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-28T11:57:00.005Z">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4rnfpworjj30if0e4wfz.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4rnlamqx4j308q06ot96.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4rnni9uaqj309406m74r.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnq9pzwoj308i06kt96.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnro7rgjj308806ggm2.jpg">
+<meta property="og:updated_time" content="2019-07-07T14:51:00.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis持久化之RDB和AOF">
-<meta name="twitter:description" content="我们知道Redis是一个内存数据库，内存的特性是断电就会丢失所有数据，那么为什么我们重新开启Redis的时候原来保存的数据还存在呢？这就是Redis的持久化。Redis的持久化有两种方式RDB和AOF。  RDB(Redis DataBase)官网介绍Redis会在指定的时间间隔内将内存中的数据集快照写入磁盘，(即Snapshot快照)恢复时是将快照文件直接读回到内存。 原理Redis会单独创建(">
+<meta name="twitter:title" content="剑指Offer之二维数组中的查找">
+<meta name="twitter:description" content="问题描述在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。二维数组如下：  问题分析假如需要我们判断的数字是7，我们从数组的右上角开始比较，9比7大，又因为9是第四列的第一个(最小的)所以第4列全部比7大，这一列可以去除，那么接下来就在下图中剩下的三列中比同理右上角8比7大，8是第三">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4rnfpworjj30if0e4wfz.jpg">
   
     <link rel="alternative" href="/atom.xml" title="刘世磊的博客" type="application/atom+xml">
   
@@ -158,47 +164,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Redis持久化之RDB和AOF" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-剑指Offer之二维数组中的查找" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Redis持久化之RDB和AOF
+      剑指Offer之二维数组中的查找
     </h1>
   
 
         
-        <a href="/2019/06/29/Redis持久化之RDB和AOF/" class="archive-article-date">
-  	<time datetime="2019-06-29T14:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
+        <a href="/2019/07/07/剑指Offer之二维数组中的查找/" class="archive-article-date">
+  	<time datetime="2019-07-07T14:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们知道Redis是一个内存数据库，内存的特性是断电就会丢失所有数据，那么为什么我们重新开启Redis的时候原来保存的数据还存在呢？这就是Redis的持久化。Redis的持久化有两种方式RDB和AOF。</p>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。<br>二维数组如下：<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4rnfpworjj30if0e4wfz.jpg" alt></p>
 <hr>
-<h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><h4 id="官网介绍"><a href="#官网介绍" class="headerlink" title="官网介绍"></a>官网介绍</h4><p>Redis会在指定的时间间隔内将内存中的数据集快照写入磁盘，(即Snapshot快照)恢复时是将快照文件直接读回到内存。</p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>Redis会单独创建(fork)一个子进程来进行持久化，会先将数据写入到一个临时文件中，等持久化过程都结束了，会将这个临时文件替换上次持久化好的文件(dump.rdb)。在整个过程中，主进程不进行任何IO操作，确保了极高的性能。</p>
-<h4 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h4><p> fork的作用是复制一个与当前进程一样的进程。新进程的所有数据（变量、环境变量、程序计数器等）数值都和原进程一致，但是是一个全新的进程，并作为原进程的子进程。</p>
-<h4 id="RDB配置"><a href="#RDB配置" class="headerlink" title="RDB配置"></a>RDB配置</h4><p>我们可以在Redis的配置文件中，搜索save找到以下配置信息：</p>
-<p>save 900 1           #在900秒(15分钟)内，如果至少有1个key发生变化，则自动备份。<br>save 300 10          #在300秒(5分钟)内，如果至少有10个key发生变化，则自动备份。<br>save 60 10000        #在60秒(1分钟)内，如果至少有10000个key，则自动备份。</p>
-<p>如果你想对你写入的数据立马进行备份，可以直接输入save或者bgsave命令(一般使用bgsave)。save是全阻塞的，bgsave是异步的(前台依然可以进行写操作)。flushall和shutdown都会产生dump.rdp文件</p>
-<h4 id="RDB优缺点"><a href="#RDB优缺点" class="headerlink" title="RDB优缺点"></a>RDB优缺点</h4><p>优点：<br>1.RDB是一个紧凑压缩的二进制文件，代表Redis在某个时间点上的数据快照，适合备份，全量复制等场景。<br>2.一旦采用这种方式，那么整个reids数据库就只包含一个文件，这样方便进行数据的备份（直接拷贝整个文件就可）<br>3.RDB在进行大数据集的恢复时，比AOF方式速度块<br>4.RDB方式可以使Redis最大性能化，父进程在保存RDB文件数据时唯一要做的就是fork出一个子进程，子进程进行处理接下来RDB文件保存的所有工作，父进程无需进行任何的磁盘I/O操作<br>缺点：<br>1.RDB方式对数据恢复的精确度不高，无法做到实时，容易丢失最后一次保存<br>2.每次需要fork新的子进程，开销较大</p>
-<h4 id="知识延伸"><a href="#知识延伸" class="headerlink" title="知识延伸"></a>知识延伸</h4><p>如果要禁用RDB的自动触发，可注销以上三个参数，或者设置save “”。<br>配置文件还有以下参数：<br>stop-writes-on-bgsave-error：在开启RDB且最近一次bgsave执行失败的情况下，如果该参数为yes，则Redis会阻止客户端的写入，直到bgsave执行成功。<br>rdbcompression：使用LZF算法压缩字符对象。<br>rdbchecksum：从RDB V5开始，在保存RDB文件时，会在文件末尾添加CRC64校验和，这样，能较容易的判断文件是否被损坏。但同时，对于带有校验和的RDB文件的保存和加载，会有10%的性能损耗。<br>dbfilename： RDB文件名。<br>dir：RDB文件保存的目录。</p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>假如需要我们判断的数字是7，我们从数组的右上角开始比较，9比7大，又因为9是第四列的第一个(最小的)所以第4列全部比7大，这一列可以去除，那么接下来就在下图中剩下的三列中比<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4rnlamqx4j308q06ot96.jpg" alt><br>同理右上角8比7大，8是第三列最小的，所以这一列去除，那么接下来在下图职工剩下的两列比较<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4rnni9uaqj309406m74r.jpg" alt><br>右上角是2比7小，这是2是这一行最右边的(最大的)，所以这一行都比7小，去除这一行，那么接下来在下图中比较<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnq9pzwoj308i06kt96.jpg" alt><br>同理右上角是4比7小，去除这一行，那么接下来在下图中比较<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnro7rgjj308806ggm2.jpg" alt><br>这时右上角是7，返回true。<br>通过以上比较方式我们可以知道，要从右上角开始比较，如果右上角的数比我们要找的数大，我们就去除这一列，如果右上角的数比我们要找的数小，我们就去除这一行，相等就返回true，如果找完全部也没找到就返回false。</p>
 <hr>
-<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><h4 id="官网介绍-1"><a href="#官网介绍-1" class="headerlink" title="官网介绍"></a>官网介绍</h4><p>以日志的形式来记录每个写操作，将Redis执行过的所有写指令记录下来(读操作不记录)，只许追加文件但不可以改写文件，Redis启动之初会读取该文件重新构建数据，换言之，Redis重启的话就根据日志文件的内容将写指令从前到后执行一次以完成数据的恢复工作</p>
-<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>所有的写入命令追加到aof_buf缓冲区中。AOF会根据对应的策略向磁盘做同步操作。刷盘策略由appendfsync参数决定。定期对AOF文件进行重写。重写策略由auto-aof-rewrite-percentage，auto-aof-rewrite-min-size两个参数决定</p>
-<h4 id="AOF配置"><a href="#AOF配置" class="headerlink" title="AOF配置"></a>AOF配置</h4><p>appendfsync有三个参数：<br>always：同步持久化 每次发生数据变更会被立即记录到磁盘的AOF文件中，性能较差但数据完整性比较好<br>everysec：出厂默认推荐，异步操作，每秒记录，如果一秒内宕机，有数据丢失<br>no: 不做配置，数据不会持久化</p>
-<h4 id="重写机制"><a href="#重写机制" class="headerlink" title="重写机制"></a>重写机制</h4><p>我们知道AOF方式会对文件不断的追加，就会使得文件的大小不断增大。这时候就需要对appendonly.aof文件进行重写。</p>
-<p>重写原理：主进程会fork出一条新的进程对文件重写，遍历新进程的内存数据，每条记录有一条set语句。重写AOF文件的操作并没有读取旧的aof文件，而是将整个内存的数据内容用命令的方式重写了一个新的AOF文件。</p>
-<p>触发重写的机制：Redis会记录上一次重写时AOF文件的大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64mb时触发。如果启动Redis后没有发生重写的，记录AOF文件的大小就启动时加载的AOF文件大小。(也可以使用bgrewriteaof命令手动触发)</p>
-<h5 id="重写配置"><a href="#重写配置" class="headerlink" title="重写配置"></a>重写配置</h5><p>auto-aof-rewrite-percentage 100               # AOF文件比上次文件大100%，即是上次大小的一倍<br>auto-aof-rewrite-min-size 64mb                # 此时AOF文件要大于64mb(满足上面的前提下)</p>
-<h4 id="AOF优缺点"><a href="#AOF优缺点" class="headerlink" title="AOF优缺点"></a>AOF优缺点</h4><p>优点：解决了RDB会丢失最后一次保存的问题，appendfsync always可以保存每一步的操作。appendfsync everysec保存每一秒的操作，最多只会丢失一秒的数据，能较大程度的保证数据的完整性。<br>缺点：AOF运行效率要慢于RDB。</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>如果RDB或AOF文件语法有误，可以使用上面两条命令来修复。<br>RDB修复命令：redis-check-rdb–fix dump.rdb<br>AOF修复命令：redis-check-aof –fix appendonlly.aof</p>
-<p><strong>注意：RDB和AOF可以同时使用，但是恢复数据时会默认加载appendonly.aof文件</strong><br>⚠️企业一般采用Redis集群和主从复制提供服务</p>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">9</span>&#125;,&#123;<span class="number">2</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">12</span>&#125;,&#123;<span class="number">4</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">13</span>&#125;,&#123;<span class="number">6</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">15</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> h = matrix.length;</span><br><span class="line">        <span class="keyword">boolean</span> result = Finnd(matrix,<span class="number">7</span>);</span><br><span class="line">        <span class="keyword">if</span>(result)</span><br><span class="line">            System.out.println(<span class="string">"找到了！"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">"没找到！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">Finnd</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//获取二维数组的列数</span></span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(matrix!=<span class="keyword">null</span> &amp;&amp; rows&lt;=matrix.length &amp;&amp; columns&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[rows][columns]==n)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(matrix[rows][columns]&gt;n)</span><br><span class="line">                columns--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                rows++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -288,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/29/Redis持久化之RDB和AOF/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/07/剑指Offer之二维数组中的查找/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +293,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/07/剑指Offer之二维数组中的查找/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          剑指Offer之二维数组中的查找
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/29/Redis的内存淘汰策略/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis的内存淘汰策略</div>
+    <a href="/2019/06/29/Redis持久化之RDB和AOF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis持久化之RDB和AOF</div>
       <i class="icon-circle-right"></i>
     </a>
   
