@@ -6,15 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 刘世磊的博客</title>
+  <title>MySQL里面常用的函数介绍 | 刘世磊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="刘世磊的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="以下所有的函数介绍都是基于下面这个数据表进行展示 字符函数length(str) #返回字符的长度 upper(str) #返回字符的大写lower(str) #返回字符的小写 concat(str,str, …) #字符拼接 substr(str,int) #返回这个字符串从这个位置开始到结束的字符substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符 instr(s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL里面常用的函数介绍">
+<meta property="og:url" content="http://yoursite.com/2019/07/10/MySQL里面常用的函数介绍/index.html">
 <meta property="og:site_name" content="刘世磊的博客">
+<meta property="og:description" content="以下所有的函数介绍都是基于下面这个数据表进行展示 字符函数length(str) #返回字符的长度 upper(str) #返回字符的大写lower(str) #返回字符的小写 concat(str,str, …) #字符拼接 substr(str,int) #返回这个字符串从这个位置开始到结束的字符substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符 instr(s">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4v3xgmsq1j30ky0ds0tl.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4v40nvhzjj30jo0dawfe.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v43zas0yj30uy0dq0uu.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4v481gr5fj30mg0dkdgo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4cker4wj30me0d4aas.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4ktist7j30nu0di757.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4o86bqjj30m20dg3zi.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4u88lknj30r00deab3.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4wvl1f6j30ls06ugm0.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5054pmsj30ok06a74r.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v52lo1fmj30ko06ymxj.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4v55aixlsj30r606yt97.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4v56rfh3sj30jq06ywex.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v58nviqcj30go06ut98.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5a82907j30e206ojrt.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5ayncw3j30f806wt92.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4v5d8g7l4j30n806ojru.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5n9n6n2j30xe06ojs1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v5qhw0dwj30w406u752.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5smk6wjj30zu06odgn.jpg">
+<meta property="og:updated_time" content="2019-07-10T15:27:17.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘世磊的博客">
+<meta name="twitter:title" content="MySQL里面常用的函数介绍">
+<meta name="twitter:description" content="以下所有的函数介绍都是基于下面这个数据表进行展示 字符函数length(str) #返回字符的长度 upper(str) #返回字符的大写lower(str) #返回字符的小写 concat(str,str, …) #字符拼接 substr(str,int) #返回这个字符串从这个位置开始到结束的字符substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符 instr(s">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg">
   
     <link rel="alternative" href="/atom.xml" title="刘世磊的博客" type="application/atom+xml">
   
@@ -154,265 +180,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-MySQL里面常用的函数介绍" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      MySQL里面常用的函数介绍
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/10/MySQL里面常用的函数介绍/" class="archive-article-date">
+
+        
+        <a href="/2019/07/10/MySQL里面常用的函数介绍/" class="archive-article-date">
   	<time datetime="2019-07-10T14:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/10/MySQL里面常用的函数介绍/">MySQL里面常用的函数介绍</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下所有的函数介绍都是基于下面这个数据表进行展示<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg" alt></p>
+<h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><p>length(str) #返回字符的长度<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v3xgmsq1j30ky0ds0tl.jpg" alt></p>
+<p>upper(str) #返回字符的大写<br>lower(str) #返回字符的小写<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v40nvhzjj30jo0dawfe.jpg" alt></p>
+<p>concat(str,str, …) #字符拼接<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v43zas0yj30uy0dq0uu.jpg" alt></p>
+<p>substr(str,int) #返回这个字符串从这个位置开始到结束的字符<br>substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v481gr5fj30mg0dkdgo.jpg" alt></p>
+<p>instr(str,str) #返回子串在原字符串第一次出现的位置，没有则返回0<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4cker4wj30me0d4aas.jpg" alt></p>
+<p>trim(str) # 去除字符前后的空格<br>trim(str from str) #去除字符前后的某些字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4ktist7j30nu0di757.jpg" alt></p>
+<p>lpad(str,int,str) #往原字符的左边添加字符是长度到达指定长度<br>rpad(str,int,str) #往原字符的右边添加字符是长度到达指定长度<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4o86bqjj30m20dg3zi.jpg" alt></p>
+<p>replace(str,str,str) #把原字符里面的某个字符替换为另一个字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4u88lknj30r00deab3.jpg" alt></p>
+<hr>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>round(x) #四舍五入<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4wvl1f6j30ls06ugm0.jpg" alt></p>
+<p>round(x,int) #小数点后保留几位后四舍五入<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5054pmsj30ok06a74r.jpg" alt></p>
+<p>ceil(x) #向上取整<br>floor(x) #向下取整<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v52lo1fmj30ko06ymxj.jpg" alt></p>
+<p>truncate(x) #截断小数点后几位<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v55aixlsj30r606yt97.jpg" alt></p>
+<p>mod(x) #取模<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v56rfh3sj30jq06ywex.jpg" alt></p>
+<hr>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>now() #获取当前时间<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v58nviqcj30go06ut98.jpg" alt></p>
+<p>curdate() #获取当前年月日<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5a82907j30e206ojrt.jpg" alt></p>
+<p>curtime() #获取当前时分秒<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5ayncw3j30f806wt92.jpg" alt></p>
+<p>year(date) #获取输入时间的年<br>month(date) #获取输入时间的月<br>以此类推还有 天，时，分，秒<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v5d8g7l4j30n806ojru.jpg" alt></p>
+<p>str_to_date(str,date) #把字符串解析成日期类型<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5n9n6n2j30xe06ojs1.jpg" alt></p>
+<p>date_format(date,str) #把日期转换成字符串<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v5qhw0dwj30w406u752.jpg" alt><br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5smk6wjj30zu06odgn.jpg" alt></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/10/MySQL里面常用的函数介绍/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/07/剑指Offer之二维数组中的查找/" class="archive-article-date">
-  	<time datetime="2019-07-07T14:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/07/剑指Offer之二维数组中的查找/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">剑指Offer之二维数组中的查找</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/07/剑指Offer之二维数组中的查找/">剑指Offer之二维数组中的查找</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/29/Redis持久化之RDB和AOF/" class="archive-article-date">
-  	<time datetime="2019-06-29T14:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/29/Redis持久化之RDB和AOF/">Redis持久化之RDB和AOF</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/29/Redis的内存淘汰策略/" class="archive-article-date">
-  	<time datetime="2019-06-29T14:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/29/Redis的内存淘汰策略/">Redis的内存淘汰策略</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/剑指Offer之判断链表是否有环/" class="archive-article-date">
-  	<time datetime="2019-06-28T03:06:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/28/剑指Offer之判断链表是否有环/">剑指Offer之判断链表是否有环</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/27/剑指Offer之找出链表中倒数第K个节点/" class="archive-article-date">
-  	<time datetime="2019-06-27T14:39:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/27/剑指Offer之找出链表中倒数第K个节点/">剑指Offer之找出链表中倒数第K个节点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/26/剑指Offer之不修改数组找出数组中的重复数字/" class="archive-article-date">
-  	<time datetime="2019-06-26T06:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/26/剑指Offer之不修改数组找出数组中的重复数字/">剑指Offer之不修改数组找出数组中的重复数字</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/25/剑指Offer之找出数组中的重复数字/" class="archive-article-date">
-  	<time datetime="2019-06-25T05:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/25/剑指Offer之找出数组中的重复数字/">剑指Offer之找出数组中的重复数字</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/hello-world/" class="archive-article-date">
-  	<time datetime="2019-06-24T04:59:57.496Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -435,8 +383,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

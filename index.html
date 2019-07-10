@@ -156,6 +156,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL里面常用的函数介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/10/MySQL里面常用的函数介绍/">MySQL里面常用的函数介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/10/MySQL里面常用的函数介绍/" class="archive-article-date">
+  	<time datetime="2019-07-10T14:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下所有的函数介绍都是基于下面这个数据表进行展示<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg" alt></p>
+<h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><p>length(str) #返回字符的长度<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v3xgmsq1j30ky0ds0tl.jpg" alt></p>
+<p>upper(str) #返回字符的大写<br>lower(str) #返回字符的小写<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v40nvhzjj30jo0dawfe.jpg" alt></p>
+<p>concat(str,str, …) #字符拼接<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v43zas0yj30uy0dq0uu.jpg" alt></p>
+<p>substr(str,int) #返回这个字符串从这个位置开始到结束的字符<br>substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v481gr5fj30mg0dkdgo.jpg" alt></p>
+<p>instr(str,str) #返回子串在原字符串第一次出现的位置，没有则返回0<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4cker4wj30me0d4aas.jpg" alt></p>
+<p>trim(str) # 去除字符前后的空格<br>trim(str from str) #去除字符前后的某些字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4ktist7j30nu0di757.jpg" alt></p>
+<p>lpad(str,int,str) #往原字符的左边添加字符是长度到达指定长度<br>rpad(str,int,str) #往原字符的右边添加字符是长度到达指定长度<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4o86bqjj30m20dg3zi.jpg" alt></p>
+<p>replace(str,str,str) #把原字符里面的某个字符替换为另一个字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4u88lknj30r00deab3.jpg" alt></p>
+<hr>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>round(x) #四舍五入<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4wvl1f6j30ls06ugm0.jpg" alt></p>
+<p>round(x,int) #小数点后保留几位后四舍五入<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5054pmsj30ok06a74r.jpg" alt></p>
+<p>ceil(x) #向上取整<br>floor(x) #向下取整<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v52lo1fmj30ko06ymxj.jpg" alt></p>
+<p>truncate(x) #截断小数点后几位<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v55aixlsj30r606yt97.jpg" alt></p>
+<p>mod(x) #取模<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v56rfh3sj30jq06ywex.jpg" alt></p>
+<hr>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>now() #获取当前时间<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v58nviqcj30go06ut98.jpg" alt></p>
+<p>curdate() #获取当前年月日<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5a82907j30e206ojrt.jpg" alt></p>
+<p>curtime() #获取当前时分秒<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5ayncw3j30f806wt92.jpg" alt></p>
+<p>year(date) #获取输入时间的年<br>month(date) #获取输入时间的月<br>以此类推还有 天，时，分，秒<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v5d8g7l4j30n806ojru.jpg" alt></p>
+<p>str_to_date(str,date) #把字符串解析成日期类型<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5n9n6n2j30xe06ojs1.jpg" alt></p>
+<p>date_format(date,str) #把日期转换成字符串<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v5qhw0dwj30w406u752.jpg" alt><br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5smk6wjj30zu06odgn.jpg" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/10/MySQL里面常用的函数介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-剑指Offer之二维数组中的查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
