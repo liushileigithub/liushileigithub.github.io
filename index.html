@@ -156,6 +156,418 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-剑指Offer之数值的整数次方" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/22/剑指Offer之数值的整数次方/">剑指Offer之数值的整数次方</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/22/剑指Offer之数值的整数次方/" class="archive-article-date">
+  	<time datetime="2019-07-22T04:30:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>这个题目相当于让我们实现Java函数库里面的power函数。我们最先想到的就是for循环，每次乘底数就可以了。但是这种方法没有考虑到0，也没考虑到负数。负数相当于正数次方再取倒数。如果把所有条件都考虑到了，使用for循环也可以得出正确的答案。但是我们想使用一个简单的方法，我们知道m^{n}=m^{n/2}*m^{n/2},m^{n/2}=m^{n/4}*m^{n/4}有了这个公式我们就可以使用递归，每次把指数缩小一半就可以了。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">Power</span><span class="params">(<span class="keyword">double</span> base, <span class="keyword">int</span> exponent)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//首先判断base是否为0，若为0直接返回0</span></span><br><span class="line">        <span class="keyword">if</span>(base == <span class="number">0.0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//取指数的绝对值</span></span><br><span class="line">        <span class="keyword">int</span> tempExponent = Math.abs(exponent);</span><br><span class="line">        <span class="comment">//如果指数为0，返回1</span></span><br><span class="line">        <span class="keyword">if</span>(tempExponent == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//如果指数为1，返回底数</span></span><br><span class="line">        <span class="keyword">if</span>(tempExponent == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> base;</span><br><span class="line">        <span class="comment">//使用递归的方式n次方就等于n/2次方乘n/2次方，使用右移1位表示除2</span></span><br><span class="line">        <span class="keyword">double</span> result = Power(base,tempExponent&gt;&gt;<span class="number">1</span>);</span><br><span class="line">        result *= result;</span><br><span class="line">        <span class="comment">//通过和1做 与 运算判断指数是否是奇数</span></span><br><span class="line">        <span class="keyword">if</span>((tempExponent &amp; <span class="number">0x1</span>) == <span class="number">1</span>)</span><br><span class="line">            <span class="comment">//若是奇数，结果还需要乘底数本事一次</span></span><br><span class="line">            result *= base;</span><br><span class="line">        <span class="comment">//若指数是负数，则对结果取倒数</span></span><br><span class="line">        <span class="keyword">if</span>(exponent &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>/result;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/22/剑指Offer之数值的整数次方/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-剑指Offer之二进制中1的个数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/21/剑指Offer之二进制中1的个数/">剑指Offer之二进制中1的个数</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/21/剑指Offer之二进制中1的个数/" class="archive-article-date">
+  	<time datetime="2019-07-21T04:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>首先我们需要先知道什么是位运算：<br>+与运算(“&amp;”)<br>运算规则：0&amp;0=0;   0&amp;1=0;   1&amp;0=0;    1&amp;1=1;<br>即：两位同时为1，则值为1。否则为0<br>例如：6 &amp; 7 = 110 &amp; 111 = 110 = 6<br>8 &amp; 3 = 1000 &amp; 11 = 0 = 0<br>+或运算(“|”)<br>运算规则：0|0=0;   0|1=1;   1|0=1;    1|1=1;<br>即：参与运算的两个数据只要有一个值为1 那么值为1<br>例如：12 | 5 = 1100 | 101 = 1101 = 13<br>4 | 5 = 100 | 101 = 101 = 5<br>+异或运算(“^”)<br>运算规则： 0^0=0;   0^1=1;   1^0=1;    1^1=0;<br>即：参加运算的两个对象，如果两个相应位为“异”（值不同），则该位结果为1，否则为0。<br>例如：9^5可写成算式如下： 00001001^00000101=00001100 (十进制为12)可见9^5=12<br>+左移运算符(“&lt;&lt;”)<br>左移运算符m &lt;&lt; n表示把m左移n位，左移的时候，最左边的n位被丢弃，同时在最右边补上n个0,相当于乘2的n次方.<br>例如：00001010 &lt;&lt; 2 = 00101000<br>     10001010 &lt;&lt; 3 = 01010000<br>+右移运算符(“&gt;&gt;”)<br>右移运算符m &gt;&gt; n表示把m右移n位，右移的时候，最右边的n位被丢弃，如果m为正数则在最左边补上n个0,如果m为负数则在最左边补上n个1，相当于除2的n次方.<br>例如：00001010 &gt;&gt; 2 = 00000010<br>     10001010 &gt;&gt; 3 = 11110001<br>那么接下来我们分析这道题。我们可以通过把原数字的各个位置和1做&amp;运算，就可以判断出这个位置是不是1.那么怎么能够判断出各个位置的情况呢？我们每判断判断一次就把我们原来的1左移一位就可以了，这样第二位就变成了1，其他位置还是0，依次这样判断就可以了。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (flag != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((n &amp; flag) != <span class="number">0</span>) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            flag = flag &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="问题扩展"><a href="#问题扩展" class="headerlink" title="问题扩展"></a>问题扩展</h3><p>我们上面的方式循环的次数等于整数二进制的位数，有多少位位我们就循环多少次。可不可以降低循环的次数，有几个1就循环几次呢。下面说一个结论，具体的证明过程就不写了。一个数和它减1的结果做与运算会把它最右边的1变成0。即n &amp; n-1 会把n最右边的1变成0。有了这个结论我们就可以把n不断的和n-1做与运算，直到n变为0。这样循环的次数就是1的个数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n != <span class="number">0</span>)&#123;</span><br><span class="line">             </span><br><span class="line">            n=n&amp;(n-<span class="number">1</span>);</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/21/剑指Offer之二进制中1的个数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-剑指Offer之矩形覆盖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/20/剑指Offer之矩形覆盖/">剑指Offer之矩形覆盖</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/20/剑指Offer之矩形覆盖/" class="archive-article-date">
+  	<time datetime="2019-07-20T04:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>这道题还是斐波拉契数列的变种。我们就是考虑第一个小举行怎么放置。就两种放的方式：竖着放，横着放。当竖着放置时，剩下的还有2*(n-1)个位置，当横着放的时候，剩下的实际也是2*(n-1)个位置，但是由于是横着放的，它下面的空间也只能横着放，没有别的选择，所以相当于只剩下2*(n-2)个位置可以自由放置。所以我们就可以得到公式:f(n)=f(n-1)*f(n-2)。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">RectCover</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target&lt;=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(target==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(target==<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> RectCover(target-<span class="number">1</span>) + RectCover(target-<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/20/剑指Offer之矩形覆盖/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-剑指Offer之变态跳台阶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/19/剑指Offer之变态跳台阶/">剑指Offer之变态跳台阶</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/19/剑指Offer之变态跳台阶/" class="archive-article-date">
+  	<time datetime="2019-07-19T04:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>这道题是在上一道题的基础上的拓展。我们还是把结果记为f(n)。如果青蛙第一次跳了1级台阶，那么就还剩f(n-1)。如果第一次跳了2级台阶，那么还剩f(n-2).如果第一次跳了3级台阶，那么还剩f(n-3)….如果第一次跳了n-1级台阶，那么还剩f(1).如果第一次跳了n级台阶，那么还剩f(0).所以f(n)就是这些所有情况的和，即：f(n)=f(n-1)+f(n-2)+…+f(2)+f(1)+f(0).由前面这个式子我们可以很轻易得到:f(n-1)=f(n-2)+…+f(2)+f(1)+f(0).这两个式子相减得到：f(n)-f(n-1)=f(n-1)，即:f(n)=2*f(n-1)。当n=1时f(n)=1。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloorII</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>*JumpFloorII(target-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/19/剑指Offer之变态跳台阶/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-剑指Offer之青蛙跳台阶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/19/剑指Offer之青蛙跳台阶/">剑指Offer之青蛙跳台阶</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/19/剑指Offer之青蛙跳台阶/" class="archive-article-date">
+  	<time datetime="2019-07-19T03:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>其实这就是斐波拉契数列的变种。青蛙第一跳就两种方式：跳一个台阶；跳两个台阶。我们把结果记为f(n)。如果第一次跳了1级台阶，那么还剩f(n-1);如果第一次跳了2级台阶，那么还剩f(n-2)。所以总的次数就是这两种方式的和，即：f(n)=f(n-1)+f(n-2)。当n=1时结果为1，当n=2时结果为2.所以得到以下代码。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(target==<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> JumpFloor(target-<span class="number">1</span>)+JumpFloor(target-<span class="number">2</span>);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/19/剑指Offer之青蛙跳台阶/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-剑指Offer之斐波拉契数列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/剑指Offer之斐波拉契数列/">剑指Offer之斐波拉契数列</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/18/剑指Offer之斐波拉契数列/" class="archive-article-date">
+  	<time datetime="2019-07-18T03:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。n&lt;=39</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>这个题目是我们学习递归算法时教科书上的例子，但是使用递归算法，开销太大，我们需要优化，怎么优化呢，那就从递归哪里不好入手，递归之所以开销大，是因为相同的项计算了很多遍，我们如果把需要的项纪录下来，就不用重复计算很多遍了。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><p>递归方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> Fibonacci(n-<span class="number">1</span>) + Fibonacci(n-<span class="number">2</span>);</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> second = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> result =<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            first = second;</span><br><span class="line">            second = result;</span><br><span class="line">            result = first + second;</span><br><span class="line">                 </span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">return</span> result;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/18/剑指Offer之斐波拉契数列/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-剑指Offer之旋转数组的最小数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -433,481 +845,9 @@
 
 
   
-    <article id="post-MySQL里面常用的函数介绍一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/MySQL里面常用的函数介绍一/">MySQL里面常用的函数介绍一</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/MySQL里面常用的函数介绍一/" class="archive-article-date">
-  	<time datetime="2019-07-10T14:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下所有的函数介绍都是基于下面这个数据表进行展示<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg" alt></p>
-<h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><p>length(str) #返回字符的长度<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v3xgmsq1j30ky0ds0tl.jpg" alt></p>
-<p>upper(str) #返回字符的大写<br>lower(str) #返回字符的小写<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v40nvhzjj30jo0dawfe.jpg" alt></p>
-<p>concat(str,str, …) #字符拼接<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v43zas0yj30uy0dq0uu.jpg" alt></p>
-<p>substr(str,int) #返回这个字符串从这个位置开始到结束的字符<br>substr(str,int,int) #返回这个字符从该位置开始的指定个数的字符<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v481gr5fj30mg0dkdgo.jpg" alt></p>
-<p>instr(str,str) #返回子串在原字符串第一次出现的位置，没有则返回0<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4cker4wj30me0d4aas.jpg" alt></p>
-<p>trim(str) # 去除字符前后的空格<br>trim(str from str) #去除字符前后的某些字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4ktist7j30nu0di757.jpg" alt></p>
-<p>lpad(str,int,str) #往原字符的左边添加字符是长度到达指定长度<br>rpad(str,int,str) #往原字符的右边添加字符是长度到达指定长度<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4o86bqjj30m20dg3zi.jpg" alt></p>
-<p>replace(str,str,str) #把原字符里面的某个字符替换为另一个字符<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v4u88lknj30r00deab3.jpg" alt></p>
-<hr>
-<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>round(x) #四舍五入<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v4wvl1f6j30ls06ugm0.jpg" alt></p>
-<p>round(x,int) #小数点后保留几位后四舍五入<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5054pmsj30ok06a74r.jpg" alt></p>
-<p>ceil(x) #向上取整<br>floor(x) #向下取整<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v52lo1fmj30ko06ymxj.jpg" alt></p>
-<p>truncate(x) #截断小数点后几位<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v55aixlsj30r606yt97.jpg" alt></p>
-<p>mod(x) #取模<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v56rfh3sj30jq06ywex.jpg" alt></p>
-<hr>
-<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><p>now() #获取当前时间<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v58nviqcj30go06ut98.jpg" alt></p>
-<p>curdate() #获取当前年月日<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5a82907j30e206ojrt.jpg" alt></p>
-<p>curtime() #获取当前时分秒<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5ayncw3j30f806wt92.jpg" alt></p>
-<p>year(date) #获取输入时间的年<br>month(date) #获取输入时间的月<br>以此类推还有 天，时，分，秒<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4v5d8g7l4j30n806ojru.jpg" alt></p>
-<p>str_to_date(str,date) #把字符串解析成日期类型<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4v5n9n6n2j30xe06ojs1.jpg" alt></p>
-<p>date_format(date,str) #把日期转换成字符串<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v5qhw0dwj30w406u752.jpg" alt><br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4v5smk6wjj30zu06odgn.jpg" alt></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/MySQL里面常用的函数介绍一/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-剑指Offer之从尾到头打印链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/剑指Offer之从尾到头打印链表/">剑指Offer之从尾到头打印链表</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/剑指Offer之从尾到头打印链表/" class="archive-article-date">
-  	<time datetime="2019-07-10T03:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。</p>
-<hr>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>从尾到头打印，我们最先想到的就是栈，先把链表从头到位压栈，然后依次出栈就可以。<br>当然我们还可以使用递归的方式，先判断是否是尾节点，如不是继续向下递归，然后加入到新的链表里。</p>
-<hr>
-<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><p>使用栈的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*    public class ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        ListNode next = null;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*        ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">*            this.val = val;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*    &#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(listNode!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            stack.push(listNode.val);</span><br><span class="line">            listNode=listNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!stack.empty())&#123;</span><br><span class="line">            list.add(stack.pop());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用递归的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*    public class ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        ListNode next = null;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*        ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">*            this.val = val;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*    &#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//必须把这个定义为全局的，不然递归的时候就会又创建一个list</span></span><br><span class="line">    ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(listNode!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.printListFromTailToHead(listNode.next);</span><br><span class="line">            list.add(listNode.val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/剑指Offer之从尾到头打印链表/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-剑指Offer之空格替换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/剑指Offer之空格替换/">剑指Offer之空格替换</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/剑指Offer之空格替换/" class="archive-article-date">
-  	<time datetime="2019-07-10T02:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
-<hr>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>我们可以把原来的字符串按照单个字符一个个遍历，然后输入到另一个新的字符串中，如果在遍历过程中遇到空格，就在新的字符串中添加%20.</p>
-<hr>
-<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">replaceSpace</span><span class="params">(StringBuffer str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        StringBuffer newStr = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(str.charAt(i)==<span class="string">' '</span>)&#123;</span><br><span class="line">                newStr.append(<span class="string">'%'</span>);</span><br><span class="line">                newStr.append(<span class="string">'2'</span>);</span><br><span class="line">                newStr.append(<span class="string">'0'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                newStr.append(str.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newStr.toString();   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/剑指Offer之空格替换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-剑指Offer之二维数组中的查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/07/剑指Offer之二维数组中的查找/">剑指Offer之二维数组中的查找</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/07/剑指Offer之二维数组中的查找/" class="archive-article-date">
-  	<time datetime="2019-07-07T14:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。<br>二维数组如下：<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4rnfpworjj30if0e4wfz.jpg" alt></p>
-<hr>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>假如需要我们判断的数字是7，我们从数组的右上角开始比较，9比7大，又因为9是第四列的第一个(最小的)所以第4列全部比7大，这一列可以去除，那么接下来就在下图中剩下的三列中比<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4rnlamqx4j308q06ot96.jpg" alt><br>同理右上角8比7大，8是第三列最小的，所以这一列去除，那么接下来在下图职工剩下的两列比较<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4rnni9uaqj309406m74r.jpg" alt><br>右上角是2比7小，这是2是这一行最右边的(最大的)，所以这一行都比7小，去除这一行，那么接下来在下图中比较<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnq9pzwoj308i06kt96.jpg" alt><br>同理右上角是4比7小，去除这一行，那么接下来在下图中比较<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4rnro7rgjj308806ggm2.jpg" alt><br>这时右上角是7，返回true。<br>通过以上比较方式我们可以知道，要从右上角开始比较，如果右上角的数比我们要找的数大，我们就去除这一列，如果右上角的数比我们要找的数小，我们就去除这一行，相等就返回true，如果找完全部也没找到就返回false。</p>
-<hr>
-<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] matrix = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">9</span>&#125;,&#123;<span class="number">2</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">12</span>&#125;,&#123;<span class="number">4</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">13</span>&#125;,&#123;<span class="number">6</span>,<span class="number">8</span>,<span class="number">11</span>,<span class="number">15</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> h = matrix.length;</span><br><span class="line">        <span class="keyword">boolean</span> result = Find(matrix,<span class="number">7</span>);</span><br><span class="line">        <span class="keyword">if</span>(result)</span><br><span class="line">            System.out.println(<span class="string">"找到了！"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            System.out.println(<span class="string">"没找到！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rows = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//获取二维数组的列数</span></span><br><span class="line">        <span class="keyword">int</span> columns = matrix[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(matrix!=<span class="keyword">null</span> &amp;&amp; rows&lt;matrix.length &amp;&amp; columns&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[rows][columns]==n)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(matrix[rows][columns]&gt;n)</span><br><span class="line">                columns--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                rows++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/07/剑指Offer之二维数组中的查找/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis持久化之RDB和AOF" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/29/Redis持久化之RDB和AOF/">Redis持久化之RDB和AOF</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/29/Redis持久化之RDB和AOF/" class="archive-article-date">
-  	<time datetime="2019-06-29T14:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道Redis是一个内存数据库，内存的特性是断电就会丢失所有数据，那么为什么我们重新开启Redis的时候原来保存的数据还存在呢？这就是Redis的持久化。Redis的持久化有两种方式RDB和AOF。</p>
-<hr>
-<h3 id="RDB-Redis-DataBase"><a href="#RDB-Redis-DataBase" class="headerlink" title="RDB(Redis DataBase)"></a>RDB(Redis DataBase)</h3><h4 id="官网介绍"><a href="#官网介绍" class="headerlink" title="官网介绍"></a>官网介绍</h4><p>Redis会在指定的时间间隔内将内存中的数据集快照写入磁盘，(即Snapshot快照)恢复时是将快照文件直接读回到内存。</p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>Redis会单独创建(fork)一个子进程来进行持久化，会先将数据写入到一个临时文件中，等持久化过程都结束了，会将这个临时文件替换上次持久化好的文件(dump.rdb)。在整个过程中，主进程不进行任何IO操作，确保了极高的性能。</p>
-<h4 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h4><p> fork的作用是复制一个与当前进程一样的进程。新进程的所有数据（变量、环境变量、程序计数器等）数值都和原进程一致，但是是一个全新的进程，并作为原进程的子进程。</p>
-<h4 id="RDB配置"><a href="#RDB配置" class="headerlink" title="RDB配置"></a>RDB配置</h4><p>我们可以在Redis的配置文件中，搜索save找到以下配置信息：</p>
-<p>save 900 1           #在900秒(15分钟)内，如果至少有1个key发生变化，则自动备份。<br>save 300 10          #在300秒(5分钟)内，如果至少有10个key发生变化，则自动备份。<br>save 60 10000        #在60秒(1分钟)内，如果至少有10000个key，则自动备份。</p>
-<p>如果你想对你写入的数据立马进行备份，可以直接输入save或者bgsave命令(一般使用bgsave)。save是全阻塞的，bgsave是异步的(前台依然可以进行写操作)。flushall和shutdown都会产生dump.rdp文件</p>
-<h4 id="RDB优缺点"><a href="#RDB优缺点" class="headerlink" title="RDB优缺点"></a>RDB优缺点</h4><p>优点：<br>1.RDB是一个紧凑压缩的二进制文件，代表Redis在某个时间点上的数据快照，适合备份，全量复制等场景。<br>2.一旦采用这种方式，那么整个reids数据库就只包含一个文件，这样方便进行数据的备份（直接拷贝整个文件就可）<br>3.RDB在进行大数据集的恢复时，比AOF方式速度块<br>4.RDB方式可以使Redis最大性能化，父进程在保存RDB文件数据时唯一要做的就是fork出一个子进程，子进程进行处理接下来RDB文件保存的所有工作，父进程无需进行任何的磁盘I/O操作<br>缺点：<br>1.RDB方式对数据恢复的精确度不高，无法做到实时，容易丢失最后一次保存<br>2.每次需要fork新的子进程，开销较大</p>
-<h4 id="知识延伸"><a href="#知识延伸" class="headerlink" title="知识延伸"></a>知识延伸</h4><p>如果要禁用RDB的自动触发，可注销以上三个参数，或者设置save “”。<br>配置文件还有以下参数：<br>stop-writes-on-bgsave-error：在开启RDB且最近一次bgsave执行失败的情况下，如果该参数为yes，则Redis会阻止客户端的写入，直到bgsave执行成功。<br>rdbcompression：使用LZF算法压缩字符对象。<br>rdbchecksum：从RDB V5开始，在保存RDB文件时，会在文件末尾添加CRC64校验和，这样，能较容易的判断文件是否被损坏。但同时，对于带有校验和的RDB文件的保存和加载，会有10%的性能损耗。<br>dbfilename： RDB文件名。<br>dir：RDB文件保存的目录。</p>
-<hr>
-<h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3><h4 id="官网介绍-1"><a href="#官网介绍-1" class="headerlink" title="官网介绍"></a>官网介绍</h4><p>以日志的形式来记录每个写操作，将Redis执行过的所有写指令记录下来(读操作不记录)，只许追加文件但不可以改写文件，Redis启动之初会读取该文件重新构建数据，换言之，Redis重启的话就根据日志文件的内容将写指令从前到后执行一次以完成数据的恢复工作</p>
-<h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>所有的写入命令追加到aof_buf缓冲区中。AOF会根据对应的策略向磁盘做同步操作。刷盘策略由appendfsync参数决定。定期对AOF文件进行重写。重写策略由auto-aof-rewrite-percentage，auto-aof-rewrite-min-size两个参数决定</p>
-<h4 id="AOF配置"><a href="#AOF配置" class="headerlink" title="AOF配置"></a>AOF配置</h4><p>appendfsync有三个参数：<br>always：同步持久化 每次发生数据变更会被立即记录到磁盘的AOF文件中，性能较差但数据完整性比较好<br>everysec：出厂默认推荐，异步操作，每秒记录，如果一秒内宕机，有数据丢失<br>no: 不做配置，数据不会持久化</p>
-<h4 id="重写机制"><a href="#重写机制" class="headerlink" title="重写机制"></a>重写机制</h4><p>我们知道AOF方式会对文件不断的追加，就会使得文件的大小不断增大。这时候就需要对appendonly.aof文件进行重写。</p>
-<p>重写原理：主进程会fork出一条新的进程对文件重写，遍历新进程的内存数据，每条记录有一条set语句。重写AOF文件的操作并没有读取旧的aof文件，而是将整个内存的数据内容用命令的方式重写了一个新的AOF文件。</p>
-<p>触发重写的机制：Redis会记录上一次重写时AOF文件的大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64mb时触发。如果启动Redis后没有发生重写的，记录AOF文件的大小就启动时加载的AOF文件大小。(也可以使用bgrewriteaof命令手动触发)</p>
-<h5 id="重写配置"><a href="#重写配置" class="headerlink" title="重写配置"></a>重写配置</h5><p>auto-aof-rewrite-percentage 100               # AOF文件比上次文件大100%，即是上次大小的一倍<br>auto-aof-rewrite-min-size 64mb                # 此时AOF文件要大于64mb(满足上面的前提下)</p>
-<h4 id="AOF优缺点"><a href="#AOF优缺点" class="headerlink" title="AOF优缺点"></a>AOF优缺点</h4><p>优点：解决了RDB会丢失最后一次保存的问题，appendfsync always可以保存每一步的操作。appendfsync everysec保存每一秒的操作，最多只会丢失一秒的数据，能较大程度的保证数据的完整性。<br>缺点：AOF运行效率要慢于RDB。</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>如果RDB或AOF文件语法有误，可以使用上面两条命令来修复。<br>RDB修复命令：redis-check-rdb–fix dump.rdb<br>AOF修复命令：redis-check-aof –fix appendonlly.aof</p>
-<p><strong>注意：RDB和AOF可以同时使用，但是恢复数据时会默认加载appendonly.aof文件</strong><br>⚠️企业一般采用Redis集群和主从复制提供服务</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/29/Redis持久化之RDB和AOF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis的内存淘汰策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/29/Redis的内存淘汰策略/">Redis的内存淘汰策略</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/29/Redis的内存淘汰策略/" class="archive-article-date">
-  	<time datetime="2019-06-29T14:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道，Redis可以设置配置文件的maxmemory参数，用来控制其最大可用内存。<br>那么随着数据量的增加，如果所需空间要超过maxmemory怎么办呢？<br>在Redis的配置文件中还有一个maxmemory-policy参数，用来配置Redis的内存淘汰策略，其默认值是noeviction。<br>下面列出的就是当内存不足时，Redis删除键时的淘汰规则。</p>
-<table>
-<thead>
-<tr>
-<th>规则名称</th>
-<th>规则说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>volatile-lru</td>
-<td>使用LRU算法删除一个键(只针对设置了生存时间的键)</td>
-</tr>
-<tr>
-<td>allkeys-lru</td>
-<td>使用LRU算法删除一个键</td>
-</tr>
-<tr>
-<td>volatile-random</td>
-<td>随机删除一个键(只针对设置了生存时间的键)</td>
-</tr>
-<tr>
-<td>allkeys-random</td>
-<td>随机删除一个键</td>
-</tr>
-<tr>
-<td>volatile-ttl</td>
-<td>删除生存时间最近的一个键(即将到期的键)</td>
-</tr>
-<tr>
-<td>noeviction</td>
-<td>不删除任何键，继续插入数据时后报错</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h3><p>LRU算法：Least RecentlyUsed，最近最少使用算法。也就是找出最近最少使用的键。<br>我们可以通过EXPIRE key seconds(单位秒)给一个键设置生存时间。当超过生存时间，键会被自动删除。<br>我们可以通过TTL key 获取指定键的剩余生存时间(单位秒)。当返回值为-1时，表示永不过期(即没有给键设置生存时间)；返回值为-2时，表示键已不存在；其他均返回剩余生存时间。<br><strong>注意：Redis的淘汰规则中的LRU算法和最小TTL算法并非是一个精确算法，其实是一个估算值，是随机抽取5(Redis默认为5)个键，找到这5个键中最近最少使用的键或者TTL最小的键。可以修改配置文件中的maxmeory-samples来改变样本的容量。（样本容量越大，得到的结果越精确，但开销也会越大。Redis官方推荐为5）</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/29/Redis的内存淘汰策略/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
