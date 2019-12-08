@@ -156,6 +156,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL里面常用的函数介绍二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/10/MySQL里面常用的函数介绍二/">MySQL里面常用的函数介绍二</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/10/MySQL里面常用的函数介绍二/" class="archive-article-date">
+  	<time datetime="2019-07-10T15:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先是一些比较简单的函数，就不具体介绍，只是简单展示<br>count() #统计行数<br>sum() #求和<br>avg() #求平均值<br>min() #求最小值<br>max() #求最大值<br>以下所有的流程控制函数介绍都是基于下面这个数据表进行展示<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg" alt></p>
+<p>if(expr1,expr2,expr3) #如果expr1为true就返回expr2，否则返回expr3)<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4vq2bssvyj30z40dcwga.jpg" alt></p>
+<p>case 参数<br>when 常量 then 表达式<br>…<br>else 表达式<br>end<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4vqn9w2i1j30lc0js76v.jpg" alt><br>这个就十分类似Java中的switch case 结构</p>
+<p>case<br>when 判断条件 then 表达式<br>…<br>else 表达式<br>end<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4vqsm9102j30l40j4go2.jpg" alt><br>这个就十分类似于Java中的if else if … else 结构</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/10/MySQL里面常用的函数介绍二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL里面常用的函数介绍一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -825,74 +891,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/06/26/剑指Offer之不修改数组找出数组中的重复数字/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-剑指Offer之找出数组中的重复数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/25/剑指Offer之找出数组中的重复数字/">剑指Offer之找出数组中的重复数字</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/25/剑指Offer之找出数组中的重复数字/" class="archive-article-date">
-  	<time datetime="2019-06-25T05:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在一个长度为n的数组中所有的数字都在0～n-1的范围内。数字中某些数字是重复的，但是不不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入一个长度为7的数组{2,3,1,0,2,5,3}，那么对应输出的重复数字是2或者3.</p>
-<hr>
-<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>我们注意到数组中的数字都是在0～n-1的范围内。如果这个数组中没有重复的数字，那么当数组排序之后数字i将出现在下标为i的位置。由于数组中有重复的数字，有些位置可能存在多个数字，同时有些位置可能没有数字。<br>现在我们需要重新排列这个数组。从头到尾一次扫描这个数组中的每个元素。当扫描到下标为i的数字时，首先比较这个数字（用m表示）是不是等于i。如果是，则继续扫描下一个数字；若果不是，则再拿它和第m个数字（即下标是m的元素）进行比较。如果它和第m个数字相等，就找到一个重复的数字（该数字在下标为i和m的位置都出现了）；如果它和第m个数字不相等，就把第i个数和第m个数交换，把m放在它的位置。接下来就是再次重复这个比较、交换的过程，直到我们找到这个重复的数字。</p>
-<hr>
-<h3 id="代入数据演示"><a href="#代入数据演示" class="headerlink" title="代入数据演示"></a>代入数据演示</h3><p>我们以{2,3,1,0,2,5,3}为例分析。<br>数组第0个元素开始比较，与2不相等。于是找到下标为2的元素，值是1，两个元素值不相等，于是交换，得到数组{1,3,2,0,2,5,3}<br>以此类推，继续比较得到数组{3,1,2,0,2,5,3}<br>继续比较，得到数组{0,1,2,3,2,5,3}<br>继续比较，此时下标为0的元素值也为0，则扫描下一个元素，下标为1的元素值也为1，继续扫描下一个元素，下标为2的元素值也为2，继续扫描下一个元素，下标为3的元素值也为3，继续扫描下一个元素，下标为4的元素值和下标不同（值为2）则和下标为2的元素值比较，发现相等，则返回，重复的数字就是2.</p>
-<hr>
-<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DuplicateNumber</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> number[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">int</span> result = duplicateNumber(number);</span><br><span class="line">        System.out.println(<span class="string">"重复的数字是："</span>+result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">duplicateNumber</span><span class="params">(<span class="keyword">int</span>[] array)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i]&gt;array.length-<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(array[i]!= i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(array[i] == array[array[i]])&#123;</span><br><span class="line">                    <span class="keyword">return</span>  array[i];</span><br><span class="line">                &#125;</span><br><span class="line">                swap(array,i,array[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] array,<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = array[m];</span><br><span class="line">        array[m] = array[n];</span><br><span class="line">        array[n] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/25/剑指Offer之找出数组中的重复数字/">展开全文 >></a>
         </p>
       
 

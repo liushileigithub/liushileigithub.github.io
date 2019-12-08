@@ -156,6 +156,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-剑指Offer之和为S的两个数字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/08/剑指Offer之和为S的两个数字/">剑指Offer之和为S的两个数字</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/08/剑指Offer之和为S的两个数字/" class="archive-article-date">
+  	<time datetime="2019-12-08T05:07:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。</p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>我们首先考虑一下两个数的和一定的情况下怎样使得乘积最小，按照题意我们假设A+B=S，并且A&lt;B，那么有A<em>B=A</em>（S-A）= -A^2+AS，这是一个开口向下的抛物线，所以A越小乘积就越小。回到我们的题目，我们可以从数组的两边取数，定义两个指针分别指向数组的两端，当两数之和比S小的时候，左侧的指针向右移动，当两数之和大于S的时候，右侧的指针向左移动。第一组两数之和等于S的数就是我们要找的数字。</p>
+<hr>
+<h3 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">FindNumbersWithSum</span><span class="params">(<span class="keyword">int</span> [] array,<span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span> (array == <span class="keyword">null</span> || array.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=array.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i]+array[j]==sum)&#123;</span><br><span class="line">            list.add(array[i]);</span><br><span class="line">            list.add(array[j]);</span><br><span class="line">                <span class="keyword">return</span> list;</span><br><span class="line">           &#125;<span class="keyword">else</span> <span class="keyword">if</span>(array[i]+array[j]&gt;sum)&#123;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/08/剑指Offer之和为S的两个数字/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-剑指Offer之数值的整数次方" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -750,72 +816,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/12/剑指Offer之重建二叉树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL里面常用的函数介绍二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/MySQL里面常用的函数介绍二/">MySQL里面常用的函数介绍二</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/MySQL里面常用的函数介绍二/" class="archive-article-date">
-  	<time datetime="2019-07-10T15:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先是一些比较简单的函数，就不具体介绍，只是简单展示<br>count() #统计行数<br>sum() #求和<br>avg() #求平均值<br>min() #求最小值<br>max() #求最大值<br>以下所有的流程控制函数介绍都是基于下面这个数据表进行展示<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4v3pg378lj30is0c275n.jpg" alt></p>
-<p>if(expr1,expr2,expr3) #如果expr1为true就返回expr2，否则返回expr3)<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g4vq2bssvyj30z40dcwga.jpg" alt></p>
-<p>case 参数<br>when 常量 then 表达式<br>…<br>else 表达式<br>end<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4vqn9w2i1j30lc0js76v.jpg" alt><br>这个就十分类似Java中的switch case 结构</p>
-<p>case<br>when 判断条件 then 表达式<br>…<br>else 表达式<br>end<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4vqsm9102j30l40j4go2.jpg" alt><br>这个就十分类似于Java中的if else if … else 结构</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/MySQL里面常用的函数介绍二/">展开全文 >></a>
         </p>
       
 
